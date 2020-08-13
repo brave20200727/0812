@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Lab</title>
+<script src="node_modules/jquery/dist/jquery.js"></script>
 <style type="text/css">
 .box {
 	position: fixed;
-	top: -200px;
-	left: 30%;
+	top: 200;
+	left: 2000px;
 	width: 450px;
 	background-color: #fff;
 	color: #7F7F7F;
@@ -19,9 +20,10 @@
 	-moz-box-shadow: 0 1px 5px #333;
 	-webkit-box-shadow: 0 1px 5px #333;
 	z-index: 101;
-	-webkit-transition: all 3s ease-out;
-	-ms-transition: all 3s ease-out;
-	transition: all 3s ease-out;
+	-webkit-transition: all 1s ease-out;
+	-ms-transition: all 1s ease-out;
+	transition: all 1s ease-out;
+	/* transition: all 1s linear; */
 }
 
 .box h1 {
@@ -49,7 +51,8 @@ a.boxclose {
 </style>
 </head>
 <body>
-	<img src="images/clickme.png" onclick="doAnimateShow();">
+	<!-- <img src="images/clickme.png" onclick="doAnimateShow();"> -->
+	<img src="images/clickme.png">
 
 	<div class="box" id="box">
 		<a class="boxclose" id="boxclose"></a>
@@ -58,21 +61,29 @@ a.boxclose {
 			window off by clicking the cross.</p>
 	</div>
 
+	<div id="debug"></div>
+
 	<script>
+		// $("#debug").text("OK");
 		function doAnimateShow() {
-			document.getElementById("box").style.left = event.clientX + "px";
-			document.getElementById("box").style.top = event.clientY + "px";
+			$("#box").css("left", event.x + "px");
+			$("#box").css("top", event.y + "px");
+			// document.getElementById("box").style.left = event.clientX + "px";
+			// document.getElementById("box").style.top = event.clientY + "px";
 		}
 
 		function doAnimateHide() {
-			document.getElementById("box").style.top = "-200px";
-			event.cancelBubble = true;
+			$("#box").css("left", "2000px");
+			event.stopPropagation();
+			// document.getElementById("box").style.top = "-200px";
+			// event.cancelBubble = true;
 		}
-		
-		document.getElementById("boxclose").onclick = doAnimateHide;
-		
-		document.onclick = doAnimateShow;
-		
+
+		// document.getElementById("boxclose").onclick = doAnimateHide;
+		$("#boxclose").on("click", doAnimateHide);
+		// document.onclick = doAnimateShow;
+		$(document).on("click", doAnimateShow);
+
 	</script>
 
 </body>

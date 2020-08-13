@@ -7,14 +7,14 @@
         $(document).ready(function () {
             $("#btnTry").click(function () {
                 // 在這裏寫程式
-                
-
-
-                
-
-                
-                
-                
+                // $("#report").text("line1<br>line2");
+                // $("#report").html("line1<br>line2");
+                // $("#report").append("line1<br>line2");
+                // var s = $("#aTextField").prop("value");
+                // $("#report").append(s + "<br>");
+                // var s = $("#aTextField").prop("value", "Hello!");
+                var s =$("input[name='radioGroup']").eq(2).prop("checked", "checked");
+                $("#report").append("radio C selected.");
             })
         });
     </script>
@@ -31,6 +31,9 @@
     <label>Text:</label> <input type="text" id="aTextField" name="someTextField"/>
   </div>
   <div>
+    <!-- $("input[name=radioGroup]":eq(2))
+    $("input[name=radioGroup]").eq(2)
+    $("#radioGroup option:selected") -->
     <label>Radio group:</label>
     <input type="radio" name="radioGroup" id="radioA" value="65"/> A
     <input type="radio" name="radioGroup" id="radioB" value="66" checked="checked"/> B
